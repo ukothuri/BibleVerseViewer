@@ -12,7 +12,7 @@ import javax.inject.Singleton
 import kotlin.jvm.java
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(SingletonComponent::class) // Hilt module tied to application lifecycle
 object AppModule {
 
     @Provides
@@ -21,7 +21,7 @@ object AppModule {
         .baseUrl("https://bible-api.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(BibleApiService::class.java)
+        .create(BibleApiService::class.java) // Creates API service implementation
 
     @Provides
     @Singleton

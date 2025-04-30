@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.cambly.bibleverseviewer.ui.theme.BibleVerseViewerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+@AndroidEntryPoint // Marks this Activity as an injection target
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

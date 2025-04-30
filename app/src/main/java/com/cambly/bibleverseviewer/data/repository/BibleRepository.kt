@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class BibleRepository @Inject constructor(private val api: BibleApiService) {
+class BibleRepository @Inject constructor(private val api: BibleApiService) { // Injects Retrofit API service
     fun fetchVerses(): Flow<List<Verse>> = flow {
-        val response = api.getVerses()
+        val response = api.getVerses() // Fetch verses from API
         if (response.isSuccessful) {
-            emit(response.body()?.verses ?: emptyList())
+            emit(response.body()?.verses ?: emptyList()) // Emit parsed verses if response is OK
         } else {
-            emit(emptyList())
+            emit(emptyList()) // Emit empty list in case of error
         }
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(Dispatchers.IO) // Executes network on IO thread
 }
