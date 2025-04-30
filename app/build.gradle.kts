@@ -72,4 +72,18 @@ dependencies {
     implementation(libs.retrofit) // Retrofit for HTTP requests
     implementation(libs.converter.gson) // Gson converter for parsing JSON responses
 
+// mockk
+    testImplementation(libs.mockk) // ➕ Adds MockK library for mocking dependencies in unit tests
+
+// Coroutine testing
+    testImplementation(libs.kotlinx.coroutines.test) // ➕ Adds support for coroutine-based testing, including runTest and dispatchers
+
+// Turbine testing
+    testImplementation(libs.turbine) // ➕ Adds Turbine library for testing Kotlin Flows
+
+// JUnit
+    testImplementation(libs.junit) // ✅ Ensures JUnit is used as the testing framework
+
+
+
 }
