@@ -1,7 +1,10 @@
+apply(plugin = "kotlin-kapt") // Enables annotation processing required by Hilt (e.g., @Inject, @HiltAndroidApp)
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)  // Applies Hilt plugin for dependency injection
+    id("org.jetbrains.kotlin.kapt") // Required for kapt annotation processor for Hilt
 }
 
 android {
@@ -37,6 +40,9 @@ android {
     buildFeatures {
         compose = true
     }
+    hilt {
+        enableAggregatingTask = false // Optional: Optimizes Hilt build process by avoiding aggregating task
+    }
 }
 
 dependencies {
@@ -56,4 +62,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Hilt
+    implementation(libs.hilt.android) // Hilt runtime for DI
+    kapt(libs.hilt.compiler) // Compiles DI code using kapt
+    implementation(libs.hilt.navigation.compose) // Integrates Hilt with Jetpack Compose navigation
+
+    // Retrofit
+    implementation(libs.retrofit) // Retrofit for HTTP requests
+    implementation(libs.converter.gson) // Gson converter for parsing JSON responses
+
 }
