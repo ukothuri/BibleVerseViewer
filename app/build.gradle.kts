@@ -72,4 +72,12 @@ dependencies {
     implementation(libs.retrofit) // Retrofit for HTTP requests
     implementation(libs.converter.gson) // Gson converter for parsing JSON responses
 
+    //mockk
+    // MockK for mocking in tests
+    testImplementation(libs.mockk) // Or the latest version
+    testImplementation(libs.kotlinx.coroutines.test) // Use latest if available
+    testImplementation(libs.turbine) // or latest version
+    testImplementation(libs.junit)
+
+
 }
